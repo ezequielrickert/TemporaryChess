@@ -1,0 +1,65 @@
+@startuml
+class board {
+    +board(int size)
+    +Piece[][] pieces
+    -int dimensions
+    +void move(Piece piece, int toX, int toY)
+    +boolean hasPiece(int x, int y)
+    +void addPiece(Piece piece, int x, int y)
+}
+
+class Piece {
+    +boolean color
+    +int x
+    +int y
+    ~void move(int x, int y)
+    +enum type
+}
+
+'class Pawn extends Piece{
+'    +boolean firstMove
+'    +color color
+'    +int x
+'    +int y
+'    +boolean move(int x, int y)
+'    +boolean lostPiece(int x, int y)
+'}
+'class Knight extends Piece{
+'    +color color
+'    +int x
+'    +int y
+'    +boolean move(int x, int y)
+'    +boolean eatPiece(int x, int y)
+'}
+'class Rook extends Piece{
+'    +boolean castling
+'    +color color
+'    +int x
+'    +int y
+'    +boolean move(int x, int y)
+'    +boolean eatPiece(int x, int y)
+'}
+'class Bishop extends Piece{
+'    +color color
+'    +int x
+'    +int y
+'    +boolean move(int x, int y)
+'    +boolean eatPiece(int x, int y)
+'}
+'class Queen extends Piece{
+'    +color color
+'    +int x
+'    +int y
+'    +boolean move(int x, int y)
+'    +boolean eatPiece(int x, int y)
+'}
+'class King extends Piece{
+'    +color color
+'    +int x
+'    +int y
+'    +boolean move(int x, int y)
+'    +boolean eatPiece(int x, int y)
+'}
+
+board o-- Piece
+@enduml
