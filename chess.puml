@@ -1,20 +1,27 @@
 @startuml
-class board {
-    +board(int size)
+class Board {
+    +Board(int size)
+    -Board(int size, Piece[][] board)
     +Piece[][] pieces
     -int dimensions
+    -void checkSquare(int x, int y)
+    -boolean isSamePiece(Piece checkPiece, int x, int y)
     +void move(Piece piece, int toX, int toY)
-    +boolean hasPiece(int x, int y)
-    +void addPiece(Piece piece, int x, int y)
+    +Board setPiece(Piece piece, int x, int y)
+    +Board move(Piece piece, int fromX, int fromY, int toX, int toY)
 }
 
 class Piece {
     +boolean color
-    +int x
-    +int y
-    ~void move(int x, int y)
-    +enum type
+    -final ChessPieceType type;
 }
+
+enum ChessPieceType {
+    PAWN, KNIGHT, BISHOP, ROOK, QUEEN, KING
+}
+
+Piece o-- ChessPieceType
+Board o-- Piece
 
 'class Pawn extends Piece{
 '    +boolean firstMove
@@ -61,5 +68,4 @@ class Piece {
 '    +boolean eatPiece(int x, int y)
 '}
 
-board o-- Piece
 @enduml
